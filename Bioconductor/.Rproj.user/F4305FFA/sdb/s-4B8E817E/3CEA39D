@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(GenomicRanges)\ngr <- GRanges(seqnames = c(\"chr1\"),strand = c(\"+\",\"-\",\"-\"),ranges = IRanges(start=c(1,3,5),width=3))\ngr\nflank(gr,5)\npromoters(gr)\nseqinfo(gr)\nseqlengths(gr) <- c(\"chr1\" = 10)\nseqinfo(gr)\nseqlevels(gr)\ngaps(gr)\nseqlevels(gr) <- c(\"chr1\",\"chr2\")\nseqnames(gr) <- c(\"chr1\",\"chr2\",\"chr1\")\ngr\nsort(gr)\nseqlevels(gr) <- c(\"chr2\",\"chr1\")\nsort(gr)\ngenome(gr) <- \"hg19\"\nseqinfo(gr)\n\n\ngr2 <- gr\ngenome(gr2) <- \"hg18\"\nfindOverlaps(gr,gr2)\n\n\n\nir=IRanges(start=c(1,3,5),width=3)\ndf=DataFrame(ir=ir,score=rnorm(3))\ndf\ndf$ir #check it out! this DataFrame is different from data.frame\n\nvalues(gr) <- DataFrame(score=rnorm(3))\ngr\nvalues(gr)\nmcols(gr)\ngr$score\ngr$score2= gr$score/3\ngr\n\ngr2 <- gr\nstrand(gr2)=c(\"*\")\ngr2\nfindOverlaps(gr,gr2)\nsubsetByOverlaps(gr2,gr) # only return those which overlaps\n\n\n\ndf <- data.frame(chr = \"chr1\",start=1:3,end = 4:6,score = rnorm(3))\ndf\nmakeGRangesFromDataFrame(df)\nmakeGRangesFromDataFrame(df,keep.extra.columns = T)\n\n\n\ngr <- GRanges(seqnames=c(\"chr1\",\"chr2\"),ranges=IRanges(start=1:2,end=4:5))\ngr\nseqlevels(gr,force=T) = c(\"chr1\")\ngr\ngr <- GRanges(seqnames=c(\"chr1\",\"chr2\"),ranges=IRanges(start=1:2,end=4:5))\ndropSeqlevels(gr,\"chr2\")\nkeepSeqlevels(gr,\"chr1\")\nkeepStandardChromosomes(gr)\nnewstyle <- mapSeqlevels(seqlevels(gr),\"NCBI\")\nnewstyle\ngr <- renameSeqlevels(gr,newstyle)\ngr\n\n\n\n",
+    "created" : 1465815306326.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "844589701",
+    "id" : "3CEA39D",
+    "lastKnownWriteTime" : 1465817450,
+    "last_content_update" : 1465817450670,
+    "path" : "C:/Users/Rahul/PycharmProjects/dnaalgos/Bioconductor/gRanges.R",
+    "project_path" : "gRanges.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
